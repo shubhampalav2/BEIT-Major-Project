@@ -1,0 +1,160 @@
+{% extends 'base.html' %} {% block title %}Crop Recommendation{% endblock title %} 
+
+{% block content %}
+<style>
+.formError{
+color:red;
+}
+</style>
+<div class="row-sm p-sm-5">
+    <div class="col-sm-12 p-sm-5">
+        <p class="text-center">
+            <h3 class="text-center">
+            <p class="text-center">
+                Enter the valid numbers into the input field
+            </p>
+        </p>
+        <p>
+            <h4 class="text-center">
+                Enter corresponding values
+            </h4>
+        </p>
+        <form method=post name="myForm" enctype=multipart/form-data onsubmit="return validateForm()">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Nitrogen(kg/ha)</span>
+            <input type="number" name="nitrogen" step="0.0001" class="form-control" placeholder="ratio of Nitrogen content in soil - kg/ha" aria-label="ratio of Nitrogen content in soil - kg/ha" aria-describedby="basic-addon1" onchange="input1()">
+            <b><span class="formError"></span></b>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Phosphorous(kg/ha)</span>
+            <input type="number" name="phosphorous" step="0.0001" class="form-control" placeholder="ratio of Phosphorous content in soil - kg/ha " aria-label="ratio of Phosphorous content in soil - kg/ha " aria-describedby="basic-addon1" onchange="input2()">
+           <b><span class="formError"></span></b> 
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Potassium(kg/ha)</span>
+            <input type="number" name="potassium" step="0.0001" class="form-control" placeholder="ratio of Potassium content in soil - kg/ha" aria-label="ratio of Potassium content in soil - kg/ha" aria-describedby="basic-addon1" onchange="input3()">
+            <b><span class="formError"></span></b> 
+           </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Temperature(C)</span>
+            <input type="number" name="temperature" step="0.0001" class="form-control" placeholder="temperature in degree Celsius " aria-label="temperature in degree Celsius" aria-describedby="basic-addon1" onchange="input4()">
+            <b><span class="formError"></span></b>
+            </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Humidity</span>
+            <input type="number" name="humidity" step="0.0001" class="form-control" placeholder="relative humidity in %" aria-label="relative humidity in %" aria-describedby="basic-addon1" onchange="input5()">
+            <b><span class="formError"></span></b>
+            </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">pH of soil</span>
+            <input type="number" name="ph" step="0.0001" class="form-control" placeholder="pH value of the soil" aria-label="pH value of the soil" aria-describedby="basic-addon1" onchange="input6()">
+            <b><span class="formError"></span></b>
+            </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Rainfall(mm)</span>
+            <input type="number" name="rainfall" step="0.0001" class="form-control" placeholder="rainfall in mm" aria-label="rainfall in mm" aria-describedby="basic-addon1" onchange="input7()">
+            <b><span class="formError"></span></b> 
+            </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+<script>
+function input1(){
+var element=document.forms['myForm']["nitrogen"].value;
+if(element.length==0)
+document.getElementsByClassName('formError')[0].innerHTML = "*This field is required";
+else
+document.getElementsByClassName("formError")[0].innerHTML="";
+}
+
+function input2(){
+var element=document.forms['myForm']["phosphorous"].value;
+if(element.length==0)
+document.getElementsByClassName('formError')[1].innerHTML = "*This field is required";
+else
+document.getElementsByClassName("formError")[1].innerHTML="";
+}
+
+function input3(){
+var element=document.forms['myForm']["potassium"].value;
+if(element.length==0)
+document.getElementsByClassName('formError')[2].innerHTML = "*This field is required";
+else
+document.getElementsByClassName("formError")[2].innerHTML="";
+}
+
+function input4(){
+var element=document.forms['myForm']["temperature"].value;
+if(element.length==0)
+document.getElementsByClassName('formError')[3].innerHTML = "*This field is required";
+else
+document.getElementsByClassName("formError")[3].innerHTML="";
+}
+
+function input5(){
+var element=document.forms['myForm']["humidity"].value;
+if(element.length==0)
+document.getElementsByClassName('formError')[4].innerHTML = "*This field is required";
+else
+document.getElementsByClassName("formError")[4].innerHTML="";
+}
+
+function input6(){
+var element=document.forms['myForm']["ph"].value;
+if(element.length==0)
+document.getElementsByClassName('formError')[5].innerHTML = "*This field is required";
+else
+document.getElementsByClassName("formError")[5].innerHTML="";
+}
+
+function input7(){
+var element=document.forms['myForm']["rainfall"].value;
+if(element.length==0)
+document.getElementsByClassName('formError')[6].innerHTML = "*This field is required";
+else
+document.getElementsByClassName("formError")[6].innerHTML="";
+}
+
+function validateForm(){
+var nitrogen = document.forms['myForm']["nitrogen"].value;
+if(nitrogen.length==0){
+document.getElementsByClassName('formError')[0].innerHTML = "*This field is required";
+return false;
+}
+var phosphorous = document.forms['myForm']["phosphorous"].value;
+if(phosphorous.length==0){
+document.getElementsByClassName('formError')[1].innerHTML = "*This field is required";
+return false;
+}
+var potassium = document.forms['myForm']["potassium"].value;
+if(potassium.length==0){
+document.getElementsByClassName('formError')[2].innerHTML = "*This field is required";
+return false;
+}
+var temperature = document.forms['myForm']["temperature"].value;
+if(temperature.length==0){
+document.getElementsByClassName('formError')[3].innerHTML = "*This field is required";
+return false;
+}
+var humidity = document.forms['myForm']["humidity"].value;
+if(humidity.length==0){
+document.getElementsByClassName('formError')[4].innerHTML = "*This field is required";
+return false;
+}
+var ph= document.forms['myForm']["ph"].value;
+if(ph.length==0){
+document.getElementsByClassName('formError')[5].innerHTML = "*This field is required";
+return false;
+}
+var rainfall= document.forms['myForm']["rainfall"].value;
+if(rainfall.length==0){
+document.getElementsByClassName('formError')[6].innerHTML = "*This field is required";
+return false;
+}
+return true;
+}
+</script>
+
+{% endblock content %}                Crop Recommendation
+            </h3>
